@@ -1,0 +1,64 @@
+{
+  "name": "fix-this-paper",
+  "version": "1.0.0",
+  "description": "This paper is broken. Read it to fix it.",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/penne12/fix-this-paper.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/penne12/fix-this-paper/issues"
+  },
+  "homepage": "https://github.com/penne12/fix-this-paper#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.3.7",
+    "cjsx-loader": "^3.0.0",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.10.0",
+    "core-js": "^2.4.0",
+    "cson-loader": "git://github.com/bleech/cson-loader",
+    "css-loader": "^0.23.1",
+    "entry-loader": "^0.1.0",
+    "exports-loader": "^0.6.3",
+    "extricate-loader": "0.0.2",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.3",
+    "img-loader": "^1.3.1",
+    "interpolate-loader": "0.0.6",
+    "json-loader": "^0.5.4",
+    "markdown-loader": "^0.1.7",
+    "ng-classify-loader": "0.0.3",
+    "node-sass": "^3.8.0",
+    "object-assign": "^4.1.0",
+    "postcss-loader": "^0.9.1",
+    "raw-loader": "^0.5.1",
+    "react-hot-loader": "^1.3.0",
+    "resolve-url-loader": "^1.6.0",
+    "rxjs": "5.0.0-beta.6",
+    "sass-loader": "^4.0.0",
+    "script-loader": "^0.7.0",
+    "slm-loader": "^0.1.1",
+    "stats-webpack-plugin": "^0.2.1",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0",
+    "yaml-loader": "^0.2.0"
+  },
+  "dependencies": {
+    "object-assign": "^4.1.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-number-format": "^0.1.1"
+  }
+}

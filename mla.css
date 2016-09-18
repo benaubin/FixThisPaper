@@ -1,0 +1,68 @@
+body {
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 12pt;
+    line-height: 200%;
+    width: 8.5in;
+    max-height: 11in;
+    margin-left: auto;
+    margin-right: auto;
+}
+.doc {
+    margin: 1in;
+}
+h1 {
+    font: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: center;
+}
+p {
+    text-indent: 3em;
+    position: static;
+}
+
+div.terminal {
+  background-color: rgb(22, 32, 29);
+  font-family: "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
+  color: #fff;
+  font-size: 11px;
+  max-height: 250px;
+  overflow: scroll;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+div.terminal input, div.terminal input:focus {
+  border: none;
+  outline: none;
+  font-family: "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
+  color: #fff;
+  background-color: transparent;
+  width: 100%;
+  font-size: 11px;
+}
+
+.terminal-input-row, .terminal-row {
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.terminal-input-row span, .terminal-row span.prompt {
+  flex-shrink: 1;
+  font-size: 11px;
+  margin-left: 5px;
+}
+.terminal-input-row input, .terminal-row span.command {
+  margin-left: 5px;
+  flex-grow: 1
+}
+
+.terminal-row .output {
+  color: #bbb;
+}
+
+.terminal-row .error {
+  color: #ba4747;
+}
