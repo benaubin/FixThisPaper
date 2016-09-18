@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8be89b13039b1eb85289"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "490fc5a2012cdc9e669e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21977,14 +21977,14 @@
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(174), RootInstanceProvider = __webpack_require__(182), ReactMount = __webpack_require__(162), React = __webpack_require__(1); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
-	var BodyText, Part1Support, Part2Explain, Part3Javascript, Part4Console, React, Terminal, div, e, h3, h4, input, p, parts, r, ref, small, span, table, tbody, td, th, thead, tr,
+	var BodyText, Part1Support, Part2Explain, Part3Javascript, Part4Console, React, Terminal, article, div, e, h3, h4, input, p, r, ref, small, span,
 	  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
 	  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
 	  hasProp = {}.hasOwnProperty;
 
 	React = __webpack_require__(1);
 
-	ref = r = React.DOM, div = ref.div, h3 = ref.h3, h4 = ref.h4, p = ref.p, span = ref.span, input = ref.input, table = ref.table, thead = ref.thead, tbody = ref.tbody, tr = ref.tr, td = ref.td, th = ref.th, small = ref.small, div = ref.div;
+	ref = r = React.DOM, div = ref.div, h3 = ref.h3, h4 = ref.h4, p = ref.p, span = ref.span, input = ref.input, article = ref.article, small = ref.small, div = ref.div;
 
 	e = React.createElement;
 
@@ -21998,12 +21998,11 @@
 
 	Terminal = __webpack_require__(192);
 
-	parts = [Part1Support, Part2Explain, Part3Javascript, Part4Console];
-
 	module.exports = BodyText = (function(superClass) {
 	  extend(BodyText, superClass);
 
 	  function BodyText(props) {
+	    this.componentDidUpdate = bind(this.componentDidUpdate, this);
 	    this.onName = bind(this.onName, this);
 	    this.onJavascript = bind(this.onJavascript, this);
 	    this.currentPartRef = bind(this.currentPartRef, this);
@@ -22012,15 +22011,28 @@
 	    this.nextPart = bind(this.nextPart, this);
 	    BodyText.__super__.constructor.call(this, props);
 	    this.state = {
-	      part: parts.shift(),
+	      part: Part1Support,
+	      parts: [Part2Explain, Part3Javascript, Part4Console],
 	      name: void 0
 	    };
 	  }
 
 	  BodyText.prototype.nextPart = function() {
-	    return this.setState({
-	      part: parts.shift()
-	    });
+	    var part;
+	    if (part = this.state.parts.shift()) {
+	      return this.setState({
+	        part: part,
+	        parts: this.state.parts
+	      });
+	    } else {
+	      return this.setState({
+	        part: {
+	          number: this.state.part.number + 1
+	        },
+	        parts: this.state.parts,
+	        end: true
+	      });
+	    }
 	  };
 
 	  BodyText.prototype.onCommand = function(command) {
@@ -22047,6 +22059,10 @@
 	    });
 	  };
 
+	  BodyText.prototype.componentDidUpdate = function() {
+	    return window.Carnival();
+	  };
+
 	  BodyText.prototype.render = function() {
 	    var ref1, ref2, ref3, ref4;
 	    return div(null, e(Part1Support, {
@@ -22061,7 +22077,9 @@
 	    }) : void 0, ((ref3 = this.state.part) != null ? ref3.number : void 0) >= 3 ? e(Part4Console, {
 	      ref: "part-3",
 	      name: this.state.name
-	    }) : void 0, e(Terminal, {
+	    }) : void 0, this.state.end ? p({
+	      className: 'mla'
+	    }, "That's all I've written for now. Check back later for more!") : e(Terminal, {
 	      javascript: ((ref4 = this.state.part) != null ? ref4.number : void 0) >= 2,
 	      onJavascript: this.onJavascript,
 	      onDone: this.nextPart,
@@ -22550,7 +22568,9 @@
 	  Part1Support.prototype.render = function() {
 	    return div({
 	      className: 'stage-1-support'
-	    }, p(null, "A message appears. It reads, \"", r.i(null, "Psst! "), "Can you help me? I think I just broke this paper.\"\nYou respond with a yes, but you aren't really sure how to help.\nAnother message appears and explains that you have to run the\n`support` command in your terminal. It looks like you can use the\nterminal below."));
+	    }, p({
+	      className: 'mla'
+	    }, "A message appears. It reads, \"", r.i(null, "Psst! "), "Can you help me? I think I just broke this paper.\"\nYou respond with a yes, but you aren't really sure how to help.\nAnother message appears and explains that you have to run the\n`support` command in your terminal. It looks like you can use the\nterminal below."));
 	  };
 
 	  return Part1Support;
@@ -22729,7 +22749,13 @@
 	  Part2Explain.prototype.render = function() {
 	    return div({
 	      className: 'stage-2-explain'
-	    }, p(null, "You go to your terminal, and type in `support`. Suddenly, this\ntext appears. You get another message on the screen. It reads,\n\"Great! Thanks for the help. I was trying to finish this guide\non how to program for my LA class (we have a project called\nWriter's Workshop), but my computer started glitching. Then, my\ncomputer started sending out bright beams of light. Infact, they\nwere so bright, I couldn't see the screen. So, of course,\nout of curiosity, I reached out to touch the screen. I'm not\nsure what I was thinking at the time, but it turned out to be a\nreally bad idea to touch a screan with crazy beams of light\ncoming out of it; I was transported inside of this paper, and\nthere is no way for me to get out without help. That's where you\ncome in: I need you to help get me out of this mess by writing\nsome code. I'll try to support you every step of the way. I'm\nafraid that I only have a limited amount of time, as I don't\nwant that odd glitch to somehow kill me. Plus, it'd be great to\nbe out by the end of Thursday, so that I can turn in my paper\nwithout getting a late penalty. That sound good?\""), p(null, "You respond with a yes. It can't be that hard to fix the paper,\ncan it?"), p(null, "Another message appears, \"Ok great! Let's get started. We're\ngoing to use a programming language called Javascript to fix the\npaper, as it's currently the only language that works on the\nweb. Don't worry though, it's pretty simple to learn. I managed\nto install a Bash emulator onto this page (like Terminal on a\nMac, or Command Prompt on a Windows PC). Also, I've installed a\nmock version of node.js, a Javascript Environment onto the\nemulator. A Javascript Environment allows you to run code\nwritten in Javascript. You can access it by typing `node` into\nthe Terminal emulator."));
+	    }, p({
+	      className: 'mla'
+	    }, "You go to your terminal, and type in `support`. Suddenly, this\ntext appears. You get another message on the screen. It reads,\n\"Great! Thanks for the help. I was trying to finish this guide\non how to program for my LA class (we have a project called\nWriter's Workshop), but my computer started glitching. Then, my\ncomputer started sending out bright beams of light. Infact, they\nwere so bright, I couldn't see the screen. So, of course,\nout of curiosity, I reached out to touch the screen. I'm not\nsure what I was thinking at the time, but it turned out to be a\nreally bad idea to touch a screan with crazy beams of light\ncoming out of it; I was transported inside of this paper, and\nthere is no way for me to get out without help. That's where you\ncome in: I need you to help get me out of this mess by writing\nsome code. I'll try to support you every step of the way. I'm\nafraid that I only have a limited amount of time, as I don't\nwant that odd glitch to somehow kill me. Plus, it'd be great to\nbe out by the end of Thursday, so that I can turn in my paper\nwithout getting a late penalty. That sound good?\""), p({
+	      className: 'mla'
+	    }, "You respond with a yes. It can't be that hard to fix the paper,\ncan it?"), p({
+	      className: 'mla'
+	    }, "Another message appears, \"Ok great! Let's get started. We're\ngoing to use a programming language called Javascript to fix the\npaper, as it's currently the only language that works on the\nweb. Don't worry though, it's pretty simple to learn. I managed\nto install a Bash emulator onto this page (like Terminal on a\nMac, or Command Prompt on a Windows PC). Also, I've installed a\nmock version of node.js, a Javascript Environment onto the\nemulator. A Javascript Environment allows you to run code\nwritten in Javascript. You can access it by typing `node` into\nthe Terminal emulator."));
 	  };
 
 	  return Part2Explain;
@@ -22798,7 +22824,11 @@
 	  Part3Javascript.prototype.render = function() {
 	    return div({
 	      className: 'stage-3-javascript'
-	    }, p(null, "You type in node, and now, this message also appears.\n\nOk. Great. Thanks for helping me. I just released, I\ncompletely forgot to introduce myself. My name is Troy. What is\nyour name?"), p(null, "It looks like your best bet is to set the variable `name` to\nyour name, but you aren't quiet sure how to do this. You ", a({
+	    }, p({
+	      className: 'mla'
+	    }, "You type in node, and now, this message also appears.\n\nOk. Great. Thanks for helping me. I just released, I\ncompletely forgot to introduce myself. My name is Troy. What is\nyour name?"), p({
+	      className: 'mla'
+	    }, "It looks like your best bet is to set the variable `name` to\nyour name, but you aren't quiet sure how to do this. You ", a({
 	      href: 'http://lmgtfy.com/?q=variable+javascript',
 	      target: '_blank'
 	    }, "Google 'variable javascript'"), " to try to get an idea of what to do."));
@@ -22893,7 +22923,11 @@
 	    this.creepyText = randomlyCreepifyText(0.03, "You entered in your name. Again, more text popped up. Troy wrote\nanother messsage, \"Hello, " + (this.props.name || 'user') + "! It's awesome\nthat you already know how to use variables in Javascript! I was\nthinking that I was going to have to instruct you on how to do\nthat. Speaking of things I don't have to tell you, I think we've\nfound the glitch. I noticed it a bit futher down the paper, but it\nmust be spreading. Hopefully it's nothing to worry about... I just\nhope that it doesn't get stronger, or it will be hard to communicate\nwith you. Maybe it is... could you do me a huge favor? Javascript\nshould allow you to use math to figure out about how many of these\ncharacters have been consumed by the glitch. I can't see what you're\nseeing, so it would be very useful if you do that.\"", true);
 	    return div({
 	      className: 'stage-4-console'
-	    }, p(null, this.creepyText.text), p(null, randomlyCreepifyText(0.03, "You count up the letters. Your numbers show that about\n" + this.creepyText.creepyCount + " of the " + this.creepyText.originalLength + "\nletters have been consumed by the glitch. You do a bit of Googling,\nand find "), a({
+	    }, p({
+	      className: 'mla'
+	    }, this.creepyText.text), p({
+	      className: 'mla'
+	    }, randomlyCreepifyText(0.03, "You count up the letters. Your numbers show that about\n" + this.creepyText.creepyCount + " of the " + this.creepyText.originalLength + "\nletters have been consumed by the glitch. You do a bit of Googling,\nand find "), a({
 	      href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators'
 	    }, randomlyCreepifyText(0.03, 'this article')), randomlyCreepifyText(0.03, " about arithmetic in Javascript.")));
 	  };
