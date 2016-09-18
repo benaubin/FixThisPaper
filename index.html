@@ -20,7 +20,15 @@
       </div>
       <script src="https://carnivalapp.io/sites/564/init.js"></script>
       <script>
-        document.addEventListener("DOMContentLoaded", Carnival.init);
+      document.addEventListener("DOMContentLoaded", function() {
+        Carnival.init({
+          enabled: true,
+          article_author: "Ben A",
+          article_selector: "#body-text",
+          block_selector: ":scope p, :scope .terminal-row, :scope .terminal-input-row",
+          onNewComment: function(comment) {console.log(comment)}
+        });
+      });
       </script>
     </body>
 </html>

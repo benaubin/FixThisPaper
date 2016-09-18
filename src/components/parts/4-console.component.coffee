@@ -61,8 +61,8 @@ module.exports =
         seeing, so it would be very useful if you do that."
         """, true
       div className: 'stage-4-console',
-        p null, @creepyText.text
-        p null,
+        p className: 'mla', @creepyText.text
+        p className: 'mla',
           randomlyCreepifyText 0.03,"""
             You count up the letters. Your numbers show that about
             #{@creepyText.creepyCount} of the #{@creepyText.originalLength}

@@ -14,7 +14,7 @@ module.exports =
         'You agree to help the voice.'
     render: ->
       div className: 'stage-1-support',
-        p null,
+        p className: 'mla',
           """
           A message appears. It reads, "
           """

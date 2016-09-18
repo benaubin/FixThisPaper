@@ -1,24 +1,33 @@
 body {
-    font-family: "Times New Roman", Georgia, Serif;
-    font-size: 12pt;
-    line-height: 200%;
     width: 8.5in;
     max-height: 11in;
     margin-left: auto;
     margin-right: auto;
 }
+
 .doc {
     margin: 1in;
 }
+
 h1 {
     font: inherit;
     font-size: inherit;
     line-height: inherit;
     text-align: center;
 }
+
+header, p.mla {
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 12pt;
+    line-height: 200%;
+}
+
+p.mla {
+  text-indent: 3em;
+}
+
 p {
-    text-indent: 3em;
-    position: static;
+  position: static;
 }
 
 div.terminal {
@@ -30,6 +39,7 @@ div.terminal {
   overflow: scroll;
   padding-top: 5px;
   padding-bottom: 5px;
+  line-height: 200%;
 }
 
 div.terminal input, div.terminal input:focus {

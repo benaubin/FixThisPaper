@@ -14,7 +14,7 @@ module.exports =
         'Starting node...'
     render: ->
       div className: 'stage-2-explain',
-        p null, """
+        p className: 'mla', """
                 You go to your terminal, and type in `support`. Suddenly, this
                 text appears. You get another message on the screen. It reads,
                 "Great! Thanks for the help. I was trying to finish this guide
@@ -34,11 +34,11 @@ module.exports =
                 be out by the end of Thursday, so that I can turn in my paper
                 without getting a late penalty. That sound good?"
                 """
-        p null, """
+        p className: 'mla', """
                 You respond with a yes. It can't be that hard to fix the paper,
                 can it?
                 """
-        p null, """
+        p className: 'mla', """
                 Another message appears, "Ok great! Let's get started. We're
                 going to use a programming language called Javascript to fix the
                 paper, as it's currently the only language that works on the

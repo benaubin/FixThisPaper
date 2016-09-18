@@ -1,6 +1,6 @@
 React = require 'react'
 
-{div, h3, h4, p, span, input, table, thead, tbody, tr, td, th, small, div} = r = React.DOM
+{div, h3, h4, p, span, input, article, small, div} = r = React.DOM
 e = React.createElement
 
 Part1Support = require './parts/1-support'
@@ -10,23 +10,29 @@ Part4Console = require './parts/4-console'
 
 Terminal = require './terminal'
 
-parts = [
-  Part1Support,
-  Part2Explain,
-  Part3Javascript,
-  Part4Console
-]
-
 module.exports =
   class BodyText extends React.Component
     constructor: (props) ->
       super props
 
       @state =
-        part: parts.shift()
+        part: Part1Support
+        parts: [
+          Part2Explain
+          Part3Javascript
+          Part4Console
+        ]
         name: undefined
     nextPart: =>
-      @setState part: parts.shift()
+      if part = @state.parts.shift()
+        @setState part: part, parts: @state.parts
+      else
+        @setState {
+          part:
+            number: @state.part.number + 1
+          parts: @state.parts
+          end: true
+        }
     onCommand: (command) =>
       @currentPartRef()?.onCommand(command)
     partNumber: =>
@@ -37,6 +43,8 @@ module.exports =
       @currentPartRef().onJavascript command, output, console, jsObjs
     onName: (name) =>
       @setState name: name
+    componentDidUpdate: =>
+      window.Carnival()
     render: ->
       div null,
         e Part1Support, {
@@ -57,11 +65,16 @@ module.exports =
           e Part4Console,
             ref: "part-3",
             name: @state.name
-        e Terminal, {
-          javascript: @state.part?.number >= 2
-          onJavascript: @onJavascript
-          onDone: @nextPart
-          placeholder: @state.part.placeholder
-          onCommand: @onCommand
-          helpText: @state.part.helpText
-        }
+        if @state.end
+          p className: 'mla', """
+            That's all I've written for now. Check back later for more!
+          """
+        else
+          e Terminal, {
+            javascript: @state.part?.number >= 2
+            onJavascript: @onJavascript
+            onDone: @nextPart
+            placeholder: @state.part.placeholder
+            onCommand: @onCommand
+            helpText: @state.part.helpText
+          }

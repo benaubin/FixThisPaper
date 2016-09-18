@@ -35,14 +35,14 @@ module.exports =
       command
     render: ->
       div className: 'stage-3-javascript',
-        p null, """
+        p className: 'mla', """
                 You type in node, and now, this message also appears.
 
                 Ok. Great. Thanks for helping me. I just released, I
                 completely forgot to introduce myself. My name is Troy. What is
                 your name?
                 """
-        p null,
+        p className: 'mla',
           """
           It looks like your best bet is to set the variable `name` to
           your name, but you aren't quiet sure how to do this. You """
