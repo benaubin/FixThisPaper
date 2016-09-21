@@ -45,5 +45,5 @@ module.exports =
           your name is text, and not code, you'll have to specify that to
           your computer. Put your name in quotes, like this:
           """
-          code null, 'var name = "Troy"'
+          code null, ' var name = "Troy"'
           '. Got it?"'

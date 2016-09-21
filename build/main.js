@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a94a21fe8f6500d9ba64"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b3f8b5fa86451b0035ae"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22826,7 +22826,7 @@
 	      className: 'stage-3-javascript'
 	    }, p({
 	      className: 'mla'
-	    }, "You type in node, and now, this message also appears.\n\n\"Ok. Great. Thanks for helping me. I just released, I\ncompletely forgot to introduce myself. My name is Troy. What is\nyour name? Could you set the name variable to your name? Since\nyour name is text, and not code, you'll have to specify that to\nyour computer. Put your name in quotes, like this:", code(null, 'var name = "Troy"'), '. Got it?"'));
+	    }, "You type in node, and now, this message also appears.\n\n\"Ok. Great. Thanks for helping me. I just released, I\ncompletely forgot to introduce myself. My name is Troy. What is\nyour name? Could you set the name variable to your name? Since\nyour name is text, and not code, you'll have to specify that to\nyour computer. Put your name in quotes, like this:", code(null, ' var name = "Troy"'), '. Got it?"'));
 	  };
 
 	  return Part3Javascript;
