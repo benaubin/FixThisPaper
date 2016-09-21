@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "490fc5a2012cdc9e669e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a94a21fe8f6500d9ba64"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22772,14 +22772,14 @@
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(174), RootInstanceProvider = __webpack_require__(182), ReactMount = __webpack_require__(162), React = __webpack_require__(1); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
-	var Part3Javascript, React, a, div, e, p, r, ref, span,
+	var Part3Javascript, React, a, code, div, e, p, r, ref, span,
 	  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
 	  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
 	  hasProp = {}.hasOwnProperty;
 
 	React = __webpack_require__(1);
 
-	ref = r = React.DOM, div = ref.div, p = ref.p, span = ref.span, div = ref.div, a = ref.a;
+	ref = r = React.DOM, div = ref.div, p = ref.p, span = ref.span, div = ref.div, a = ref.a, code = ref.code;
 
 	e = React.createElement;
 
@@ -22826,12 +22826,7 @@
 	      className: 'stage-3-javascript'
 	    }, p({
 	      className: 'mla'
-	    }, "You type in node, and now, this message also appears.\n\nOk. Great. Thanks for helping me. I just released, I\ncompletely forgot to introduce myself. My name is Troy. What is\nyour name?"), p({
-	      className: 'mla'
-	    }, "It looks like your best bet is to set the variable `name` to\nyour name, but you aren't quiet sure how to do this. You ", a({
-	      href: 'http://lmgtfy.com/?q=variable+javascript',
-	      target: '_blank'
-	    }, "Google 'variable javascript'"), " to try to get an idea of what to do."));
+	    }, "You type in node, and now, this message also appears.\n\n\"Ok. Great. Thanks for helping me. I just released, I\ncompletely forgot to introduce myself. My name is Troy. What is\nyour name? Could you set the name variable to your name? Since\nyour name is text, and not code, you'll have to specify that to\nyour computer. Put your name in quotes, like this:", code(null, 'var name = "Troy"'), '. Got it?"'));
 	  };
 
 	  return Part3Javascript;

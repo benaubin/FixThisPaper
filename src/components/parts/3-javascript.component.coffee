@@ -1,6 +1,6 @@
 React = require 'react'
 
-{div, p, span, div, a} = r = React.DOM
+{div, p, span, div, a, code} = r = React.DOM
 e = React.createElement
 
 module.exports =
@@ -35,19 +35,15 @@ module.exports =
       command
     render: ->
       div className: 'stage-3-javascript',
-        p className: 'mla', """
-                You type in node, and now, this message also appears.
-
-                Ok. Great. Thanks for helping me. I just released, I
-                completely forgot to introduce myself. My name is Troy. What is
-                your name?
-                """
         p className: 'mla',
           """
-          It looks like your best bet is to set the variable `name` to
-          your name, but you aren't quiet sure how to do this. You """
-          a href: 'http://lmgtfy.com/?q=variable+javascript', target: '_blank',
-            """
-            Google 'variable javascript'
-            """
-          " to try to get an idea of what to do."
+          You type in node, and now, this message also appears.
+
+          "Ok. Great. Thanks for helping me. I just released, I
+          completely forgot to introduce myself. My name is Troy. What is
+          your name? Could you set the name variable to your name? Since
+          your name is text, and not code, you'll have to specify that to
+          your computer. Put your name in quotes, like this:
+          """
+          code null, 'var name = "Troy"'
+          '. Got it?"'
