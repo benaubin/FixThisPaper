@@ -13,8 +13,8 @@ module.exports =
       @state =
         watched: false
     @number = 1
-    @placeholder = 'you try typing `node` to run some javascript.'
-    @helpText = 'Type `node` to start the Javascript emulator.'
+    @placeholder = 'Start the Javascript emulator.'
+    @helpText = 'Start the Javascript emulator.'
     componentDidMount: ->
       unless @state.watched
         scrollListener = =>

@@ -3,19 +3,6 @@ React = require 'react'
 {div, h3, h4, p, span, input, table, thead, tbody, tr, td, th, small, div} = r = React.DOM
 e = React.createElement
 
-# JSJS.SetErrorReporter(jsObjs.cx, JSJS.wrapFunction {
-#   func: (message) ->
-#
-#   args: [JSJS.Types.dynamicPtr, JSJS.Types.dynamicPtr, JSJS.Types.dynamicPtr]
-#   returns: nullitt
-# }function(a, b, c){
-#   console.warn(
-#     ,
-#     JSJS.identifyConvertValue(JSJS.Types.dynamicPtr, b),
-#     JSJS.identifyConvertValue(JSJS.Types.dynamicPtr, c)
-#   );
-# })
-
 newJsObjs = require '../new-js-objs'
 
 module.exports =
