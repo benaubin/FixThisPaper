@@ -1,0 +1,30 @@
+body {
+  width: 8.5in;
+  max-height: 11in;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+}
+
+
+.doc {
+    margin: 1in;
+}
+
+h1 {
+    font: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: center;
+}
+
+header, p.mla {
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 12pt;
+    line-height: 200%;
+}
+
+p.mla {
+  text-indent: 3em;
+  position: static;
+}

@@ -1,0 +1,28 @@
+.help-box {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 15px 15px 5px;
+  line-height: 125%;
+  border-radius: 10px;
+  margin: 15px 40px 25px;
+  border: 2px solid #000;
+
+  @media screen {
+    background-color: #1c7596;
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    margin: 15px 0;
+  }
+}
+
+.screen-hidden {
+  @media screen {
+    display: none;
+  }
+}
+
+.print-hidden {
+  @media print {
+    display: none;
+  }
+}

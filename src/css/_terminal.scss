@@ -1,0 +1,51 @@
+.console-log-log {
+  color: #bab;
+}
+
+div.terminal {
+  $mono-fonts: "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
+  background-color: rgb(22, 32, 29);
+  font-family: $mono-fonts;
+  color: #fff;
+  font-size: 11px;
+  max-height: 250px;
+  overflow: scroll;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  line-height: 200%;
+
+  input, input:focus {
+    border: none;
+    outline: none;
+    font-family: $mono-fonts;
+    color: #fff;
+    background-color: transparent;
+    width: 100%;
+    font-size: 11px;
+  }
+}
+.terminal-input-row, .terminal-row {
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.terminal-input-row span, .terminal-row span.prompt {
+  flex-shrink: 1;
+  font-size: 11px;
+  margin-left: 5px;
+}
+.terminal-input-row input, .terminal-row span.command {
+  margin-left: 5px;
+  flex-grow: 1
+}
+
+.terminal-row {
+  .output {
+    color: #bbb;
+  }
+  .error {
+    color: #ba4747;
+  }
+}

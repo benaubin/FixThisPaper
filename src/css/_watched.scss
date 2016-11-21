@@ -1,0 +1,50 @@
+@keyframes darken {
+  0% {
+    background-color: transparent;
+  }
+
+  99% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: hsla(0, 0%, 75%, 0.75);
+  }
+}
+
+body {
+  &.watched-1-after {
+    animation-duration: 60s;
+    animation-name: darken;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  &.watched-1 {
+    background-color: #707070 !important;
+    margin: none;
+    transition: background-color 3s;
+    * {
+      opacity: 0.75 !important;
+      transition: opacity 1s;
+    }
+    input {
+      visibility: hidden !important;
+    }
+    &::before {
+      background-color: #fff;
+      width: 50vh;
+      height: 30vh;
+      top: 35vh;
+      left: calc(50vw - 25vh);
+      visibility: visible;
+    }
+    &::after {
+      background-color: #707070;
+      width: 16vh;
+      height: 16vh;
+      top: 42vh;
+      left: calc(50vw - 8vh);
+      visibility: visible;
+    }
+  }
+}

@@ -7,7 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --inline --hot",
+    "server": "webpack-dev-server --inline --hot",
+    "build-dev": "webpack",
+    "build": "NODE_ENV='production' webpack -p"
   },
   "repository": {
     "type": "git",
