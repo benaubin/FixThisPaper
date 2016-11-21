@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "944f9e59dfe2d3ae0f68"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "04d9fcb027c6283b9fef"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -47062,7 +47062,7 @@
 /* 284 */
 /***/ function(module, exports) {
 
-	module.exports = new Date('2016-11-21T04:52:53.528Z');
+	module.exports = new Date('2016-11-21T04:59:03.614Z');
 
 /***/ },
 /* 285 */
@@ -47104,7 +47104,7 @@
 	    BodyText.__super__.constructor.call(this, props);
 	    this.state = {
 	      part: Part1Support,
-	      parts: [Part2Explain, Part3Javascript, Part4Math],
+	      parts: [Part2Explain],
 	      name: void 0
 	    };
 	  }
@@ -47152,7 +47152,7 @@
 	  };
 
 	  BodyText.prototype.render = function() {
-	    var ref1, ref2, ref3, ref4, ref5;
+	    var ref1, ref2, ref3;
 	    return div(null, e(Part1Support, {
 	      onDone: this.nextPart,
 	      current: ((ref1 = this.state.part) != null ? ref1.number : void 0) === 0,
@@ -47161,16 +47161,10 @@
 	      onDone: this.nextPart,
 	      version: this.props.version,
 	      ref: "part-1"
-	    }) : void 0, ((ref3 = this.state.part) != null ? ref3.number : void 0) >= 2 ? e(Part3Javascript, {
-	      ref: "part-2",
-	      onName: this.onName
-	    }) : void 0, ((ref4 = this.state.part) != null ? ref4.number : void 0) >= 3 ? e(Part4Math, {
-	      ref: "part-3",
-	      name: this.state.name
 	    }) : void 0, this.state.end ? p({
 	      className: 'mla'
 	    }, "That's all I've written for now. Check back later for more!") : e(Terminal, {
-	      javascript: ((ref5 = this.state.part) != null ? ref5.number : void 0) >= 2,
+	      javascript: ((ref3 = this.state.part) != null ? ref3.number : void 0) >= 2,
 	      onJavascript: this.onJavascript,
 	      onDone: this.nextPart,
 	      placeholder: this.state.part.placeholder,
@@ -48051,7 +48045,7 @@
 	      className: 'mla'
 	    }, e(GlitchTextComponent, {
 	      className: 'mla',
-	      text: "Looks like you got in. Immediatly, you want to turn off the glitches.\nThe text is getting hard to read. "
+	      text: "Looks like you got in. Immediatly, you want to turn off the glitches.\nThe text is getting hard to read."
 	    })));
 	  };
 
