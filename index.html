@@ -2,33 +2,30 @@
     <head>
         <title>Fix This Paper</title>
         <link rel="stylesheet" href="mla.css">
-        <script src="vendor/libjs.O2.min.js"></script>
+        <script src="build/styles.js"></script>
         <script src="build/main.js"></script>
+        <script src="vendor/libjs.O2.min.js" defer async></script>
     </head>
     <body>
       <div class="doc">
         <header>
-          Ben A<br>
+          Ben Aubin<br>
           Mr. Soto<br>
           Language Arts<br>
-          September 16, 2016<br>
+          <span id="date-id">
+            <script>
+            document.write(new Date().toLocaleString('en-us', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric'
+            }))
+            </script>
+          </span><br>
           <h1>
-            Fix this paper.
+            Fix This Paper
           </h1>
         </header>
         <div id="body-text"></div>
       </div>
-      <script src="https://carnivalapp.io/sites/564/init.js"></script>
-      <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        Carnival.init({
-          enabled: true,
-          article_author: "Ben A",
-          article_selector: "#body-text",
-          block_selector: ":scope p, :scope .terminal-row, :scope .terminal-input-row",
-          onNewComment: function(comment) {console.log(comment)}
-        });
-      });
-      </script>
     </body>
 </html>

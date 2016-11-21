@@ -10,14 +10,16 @@ devServerPort = 3808
 # set NODE_ENV=production on the environment to add asset fingerprints
 production = process.env.NODE_ENV == 'production'
 config =
-  entry: application: './src/main.coffee'
+  entry:
+    main: './src/main.coffee',
+    styles: './src/css/base.scss'
   output:
     path: 'build'
     publicPath: '/build/'
-    filename: 'main.js'
+    filename: '[name].js'
   resolve:
     extensions: [
-      '', '.slim', '.slm', '.coffee', '.ts', '.js.ts', '.tsx', '.js', '.jsx', '.html', '.component.coffee'
+      '', '.slim', '.slm', '.coffee', '.ts', '.js.ts', '.tsx', '.js', '.jsx', '.html', '.component.coffee', '.scss'
     ]
   module:
     preLoaders: [
@@ -40,6 +42,10 @@ config =
       }
       { test: /\.([jc]son|yaml)$/, loader: "json" }
       { test: /\.txt$/, loader: 'raw' }
+      {
+        test: /\.scss$/,
+        loaders: ['style', "css", "resolve-url", "sass"]
+      }
     ]
     postLoaders: []
   plugins: []

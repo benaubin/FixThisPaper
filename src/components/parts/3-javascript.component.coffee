@@ -3,6 +3,9 @@ React = require 'react'
 {div, p, span, div, a, code} = r = React.DOM
 e = React.createElement
 
+HelpBoxComponent = require '../help-box'
+GlitchTextComponent = require '../glitch-text'
+
 module.exports =
   class Part3Javascript extends React.Component
     @number = 2
@@ -36,14 +39,7 @@ module.exports =
     render: ->
       div className: 'stage-3-javascript',
         p className: 'mla',
+          e GlitchTextComponent, className: 'mla', text: """
+          Looks like you got in. Immediatly, you want to turn off the glitches.
+          The text is getting hard to read.
           """
-          You type in node, and now, this message also appears.
-
-          "Ok. Great. Thanks for helping me. I just released, I
-          completely forgot to introduce myself. My name is Troy. What is
-          your name? Could you set the name variable to your name? Since
-          your name is text, and not code, you'll have to specify that to
-          your computer. Put your name in quotes, like this:
-          """
-          code null, ' var name = "Troy"'
-          '. Got it?"'

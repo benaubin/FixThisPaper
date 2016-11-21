@@ -1,78 +1,14 @@
-body {
-    width: 8.5in;
-    max-height: 11in;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.doc {
-    margin: 1in;
-}
-
-h1 {
-    font: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    text-align: center;
-}
-
-header, p.mla {
-    font-family: "Times New Roman", Georgia, Serif;
-    font-size: 12pt;
-    line-height: 200%;
-}
-
-p.mla {
-  text-indent: 3em;
-}
-
-p {
-  position: static;
-}
-
-div.terminal {
-  background-color: rgb(22, 32, 29);
-  font-family: "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
-  color: #fff;
-  font-size: 11px;
-  max-height: 250px;
-  overflow: scroll;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  line-height: 200%;
-}
-
-div.terminal input, div.terminal input:focus {
-  border: none;
-  outline: none;
-  font-family: "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
-  color: #fff;
-  background-color: transparent;
-  width: 100%;
-  font-size: 11px;
-}
-
-.terminal-input-row, .terminal-row {
-  display: flex;
-  flex-direction: row;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.terminal-input-row span, .terminal-row span.prompt {
-  flex-shrink: 1;
-  font-size: 11px;
-  margin-left: 5px;
-}
-.terminal-input-row input, .terminal-row span.command {
-  margin-left: 5px;
-  flex-grow: 1
-}
-
-.terminal-row .output {
-  color: #bbb;
-}
-
-.terminal-row .error {
-  color: #ba4747;
+body::before, body::after {
+   content: '';
+   display: inline-block;
+   width: 0;
+   height: 0;
+   position: fixed;
+   top: 50vh;
+   left: 50vw;
+   margin: 0;
+   border-radius: 100%;
+   visibility: hidden;
+   background-color: transparent;
+   transition: width 2s 1s, height 2s 1s, top 2s 1s, left 2s 1s;
 }

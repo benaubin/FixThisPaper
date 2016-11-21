@@ -16,35 +16,7 @@ e = React.createElement
 #   );
 # })
 
-newJsObjs = ((JSJS) ->
-  (onConsoleLog) ->
-    jsObjs = JSJS.Init()
-
-    fakeConsoleLog = JSJS.wrapFunction {
-      func: (message) ->
-        (console.log)(message)
-        return
-      args: [JSJS.Types.dynamicPtr]
-      returns: null
-    }
-
-    ptrFakeConsoleLog = JSJS.NewFunction jsObjs.cx, fakeConsoleLog, 1, 'log'
-
-    consoleGetProperty = (prop) ->
-      switch prop
-        when 'log' then { type: JSJS.Types.funcPtr, val: ptrFakeConsoleLog }
-        else
-          return true
-
-    consoleClass = JSJS.CreateClass JSJS.JSCLASS_GLOBAL_FLAGS,
-      JSJS['PropertyStub'], JSJS['PropertyStub'], JSJS.wrapGetter( consoleGetProperty, JSJS.Types.bool),
-      JSJS['StrictPropertyStub'], JSJS['EnumerateStub'], JSJS.wrapResolver (propName) ->
-        (['log']).indexOf(propName) != -1
-      JSJS['ConvertStub'], JSJS['FinalizeStub']
-    jsConsole = JSJS.DefineObject jsObjs.cx, jsObjs.glob, "console", consoleClass
-
-    jsObjs
-)(window.JSJS)
+newJsObjs = require '../new-js-objs'
 
 module.exports =
   class Terminal extends React.Component
@@ -54,15 +26,16 @@ module.exports =
         terminalText: ''
         commands: []
         console: []
-      @jsObjs = newJsObjs(@onConsoleLog)
     handleCommandChange: (e)  =>
       @setState terminalText: e.target.value
     promptChar: =>
       if @props.javascript then ' > ' else ' $ '
     onConsoleLog: (log, type) =>
+      console.log(log, type)
+      logObject = {log: log, logType: type}
+      @state.commands.push logObject
       @setState {
-        commands: @state.commands.concat log: log, type: type
-        console: @state.console.concat log: log, type: type
+        console: @state.console.concat(logObject)
       }, =>
         terminalInputNode = @terminalNode.getElementsByClassName('terminal-input-row')[0]
         @terminalNode.scrollTop = terminalInputNode.offsetTop
@@ -76,6 +49,7 @@ module.exports =
           promptChar: @promptChar()
         }
         if @props.javascript
+          @jsObjs ||= newJsObjs(@onConsoleLog)
           try
             jsOutput = JSJS.EvaluateScript @jsObjs.cx, @jsObjs.glob, command.text
             output = JSJS.identifyConvertValue JSJS.Types.dynamicPtr, jsOutput
@@ -86,6 +60,7 @@ module.exports =
             command = @props.onJavascript command, output, @state.console, @jsObjs
           catch error
             command.error = error.toString()
+            console.error "Caught error", error
 
           @setState {
             commands: @state.commands.concat command
@@ -101,11 +76,8 @@ module.exports =
             command.response = 'Cleared.'
             @setState commands: [command], terminalText: ''
           else
-            if command.text == 'help'
-              command.response = @props.helpText
-            else
-              command.response = @props.onCommand(command.text) ||
-                "Unknown command '#{command.text}'. Type `help` for help"
+            command.response = @props.onCommand(command.text) ||
+              "Unknown command '#{command.text}'. Type `help` for help"
             @setState {
                 commands: @state.commands.concat command
                 terminalText: ''
@@ -116,10 +88,10 @@ module.exports =
     render: ->
       div {className: 'terminal', ref: (ref) => @terminalNode = ref},
         for command, i in @state.commands
-          if command.log
+          if command.logType
             div key: i,
               div className: 'terminal-row',
-                span className: ['log', command.logType].join(' '),
+                span className: "console-log-#{command.logType}",
                   command.log
           else
             div key: i,

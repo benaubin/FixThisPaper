@@ -1,52 +1,97 @@
 React = require 'react'
 
-{div, h3, h4, p, span, input, table, thead, tbody, tr, td, th, small, div} = r = React.DOM
+{div, h3, h4, p, span, input, strong, small, br, small, div, ul, li} = r = React.DOM
 e = React.createElement
+
+HelpBoxComponent = require '../help-box'
+GlitchTextComponent = require '../glitch-text'
 
 module.exports =
   class Part2Explain extends React.Component
+    constructor: (props) ->
+      super props
+      @state =
+        watched: false
     @number = 1
-    @placeholder = 'type `node` to start the Javascript emulator.'
+    @placeholder = 'you try typing `node` to run some javascript.'
     @helpText = 'Type `node` to start the Javascript emulator.'
+    componentDidMount: ->
+      unless @state.watched
+        scrollListener = =>
+          el = window.document.getElementById('watched-paragraph')
+          top = el.offsetTop
+          height = el.offsetHeight
+
+          top += el.offsetTop while el = el.offsetParent
+
+          if top < window.pageYOffset + (window.innerHeight / 5 * 3)
+            window.setTimeout =>
+              window.document.body.classList.add('watched-1')
+              window.setTimeout =>
+                window.document.body.classList.remove('watched-1')
+                window.document.body.classList.add('watched-1-after')
+                window.setTimeout =>
+                  @setState watched: true
+                , 1000
+              , 4 * 1000
+            , 10 * 1000
+            document.removeEventListener 'scroll', scrollListener
+        document.addEventListener 'scroll', scrollListener
     onCommand: (command) =>
       if command.split(' ')[0] == 'node'
         @props.onDone()
         'Starting node...'
     render: ->
       div className: 'stage-2-explain',
-        p className: 'mla', """
-                You go to your terminal, and type in `support`. Suddenly, this
-                text appears. You get another message on the screen. It reads,
-                "Great! Thanks for the help. I was trying to finish this guide
-                on how to program for my LA class (we have a project called
-                Writer's Workshop), but my computer started glitching. Then, my
-                computer started sending out bright beams of light. Infact, they
-                were so bright, I couldn't see the screen. So, of course,
-                out of curiosity, I reached out to touch the screen. I'm not
-                sure what I was thinking at the time, but it turned out to be a
-                really bad idea to touch a screan with crazy beams of light
-                coming out of it; I was transported inside of this paper, and
-                there is no way for me to get out without help. That's where you
-                come in: I need you to help get me out of this mess by writing
-                some code. I'll try to support you every step of the way. I'm
-                afraid that I only have a limited amount of time, as I don't
-                want that odd glitch to somehow kill me. Plus, it'd be great to
-                be out by the end of Thursday, so that I can turn in my paper
-                without getting a late penalty. That sound good?"
-                """
-        p className: 'mla', """
-                You respond with a yes. It can't be that hard to fix the paper,
-                can it?
-                """
-        p className: 'mla', """
-                Another message appears, "Ok great! Let's get started. We're
-                going to use a programming language called Javascript to fix the
-                paper, as it's currently the only language that works on the
-                web. Don't worry though, it's pretty simple to learn. I managed
-                to install a Bash emulator onto this page (like Terminal on a
-                Mac, or Command Prompt on a Windows PC). Also, I've installed a
-                mock version of node.js, a Javascript Environment onto the
-                emulator. A Javascript Environment allows you to run code
-                written in Javascript. You can access it by typing `node` into
-                the Terminal emulator.
-                """
+        e HelpBoxComponent, title: "Paper #{@props.version} Help Infomation:",
+          p null, """
+          Designed for the authors's LA Class. Designed to teach code in an...
+          'interesting' way. Not ready for use.
+          """
+          strong null, 'Commands:'
+          ul null,
+            li null,
+              strong null, 'node'
+              ': start a Javascript emulator'
+          strong null, "Known Bugs:"
+          ul null,
+            li null, 'Very glitchy'
+            li null, 'Dangerously glitchy'
+        p className: 'mla', id: 'watched-paragraph', """
+          An "interesting" way? You stop for a bit to wonder what the author
+          meant by that. It seems to concern you. Only a bit. What really
+          concerns you is the "dangerously" glitchy known-bug. Maybe your hunch
+          about this paper was right. It just feels, weird. Like you're being
+          watched cloesly. Almost as if someone cares about what you do in your
+          free time. The thought makes you laugh a bit. And even while it feels
+          so ridiculous, you can't shake that feeling that you're being watched.
+          You're being watched, somehow, you just know.
+          """
+        e GlitchTextComponent,
+          className: 'mla'
+          stopGlitch: !@state.watched
+          text: """
+          You know someone's watching you. It's creepy. The hairs on your neck
+          are standing. You look behind you, but there's nothing there.
+          Something, someone, they are watching. They have to be. It's what
+          seems like a meaningless fear. You've been on websites that felt
+          creepy before, but you knew everything was still fine. Still, this
+          one seems somewhat.... dangerous. You feel unsafe. You have this
+          strong feeling that someone or something, they have to be watching.
+          """
+        div className: !@state.watched && 'screen-hidden',
+          div className: 'eye screen-hidden'
+          e GlitchTextComponent, className: 'mla', text: """
+          "Wait? What was that?" you ask, but no one's there. The eye
+          disappeared faster then it appeared. Your suspicion must have been
+          right. Something's wrong. Maybe someone hacked into your computer.
+          Looks like you'll have to hurry in order to get this fixed. How could
+          you fix it? You take some time to think; to figure out what to do to
+          fix this crazy mess.
+          """
+          e GlitchTextComponent, className: 'mla', text: """
+          "I got it!" you exclaim. This paper's a website - so you should be
+          able to hack into it with Javascript. Maybe that will work. If only
+          you could find a way to -- you remember there's a terminal on this
+          page... if only there were a way to... maybe...
+          """

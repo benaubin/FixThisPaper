@@ -6,7 +6,7 @@ e = React.createElement
 Part1Support = require './parts/1-support'
 Part2Explain = require './parts/2-explain'
 Part3Javascript = require './parts/3-javascript'
-Part4Console = require './parts/4-console'
+Part4Math = require './parts/4-math'
 
 Terminal = require './terminal'
 
@@ -19,8 +19,8 @@ module.exports =
         part: Part1Support
         parts: [
           Part2Explain
-          Part3Javascript
-          Part4Console
+          # Part3Javascript
+          # Part4Math
         ]
         name: undefined
     nextPart: =>
@@ -43,28 +43,28 @@ module.exports =
       @currentPartRef().onJavascript command, output, console, jsObjs
     onName: (name) =>
       @setState name: name
-    componentDidUpdate: =>
-      window.Carnival()
     render: ->
       div null,
         e Part1Support, {
           onDone: @nextPart
+          current: @state.part?.number == 0
           ref: "part-0"
         }
         if @state.part?.number >= 1
           e Part2Explain, {
             onDone: @nextPart
+            version: @props.version
             ref: "part-1"
           }
-        if @state.part?.number >= 2
-          e Part3Javascript, {
-            ref: "part-2"
-            onName: @onName
-          }
-        if @state.part?.number >= 3
-          e Part4Console,
-            ref: "part-3",
-            name: @state.name
+        # if @state.part?.number >= 2
+        #   e Part3Javascript, {
+        #     ref: "part-2"
+        #     onName: @onName
+        #   }
+        # if @state.part?.number >= 3
+        #   e Part4Math,
+        #     ref: "part-3",
+        #     name: @state.name
         if @state.end
           p className: 'mla', """
             That's all I've written for now. Check back later for more!
@@ -76,5 +76,4 @@ module.exports =
             onDone: @nextPart
             placeholder: @state.part.placeholder
             onCommand: @onCommand
-            helpText: @state.part.helpText
           }

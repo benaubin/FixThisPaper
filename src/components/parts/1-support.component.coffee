@@ -1,28 +1,40 @@
 React = require 'react'
 
-{div, h3, h4, p, span, input, table, thead, tbody, tr, td, th, small, div} = r = React.DOM
+{div, h3, h4, p, span, input, strong, small, br, div, hr} = r = React.DOM
 e = React.createElement
+
+HelpBoxComponent = require '../help-box'
 
 module.exports =
   class Part1Support extends React.Component
     @number = 0
-    @placeholder = 'type `support` to help the writer of the message.'
-    @helpText = 'Type `support` to help the writer of the message, then press enter.'
+    @placeholder = 'Try typing in `help` here.'
     onCommand: (command) =>
-      if command.split(' ')[0] == 'support'
+      if command.split(' ')[0] == 'help'
         @props.onDone()
-        'You agree to help the voice.'
+        'Help infomation shown.'
     render: ->
       div className: 'stage-1-support',
         p className: 'mla',
           """
-          A message appears. It reads, "
+          You're looking around the web, when you stumble upon a paper. And,
+          well, something feels... off. You really think that this paper is
+          broken. Luckily, it's not just a stupid Word document, it's a
+          website. Maybe this will be an opertunity for you to learn to code.
+          You notice a terminal below this text, and you know enough from your
+          days of running a Minecraft server to know that you can normally pull
+          up some help infomation in a terminal by typing in the `help` command.
+          So umm... yeah. You try that.
           """
-          r.i null, "Psst! "
-          """
-          Can you help me? I think I just broke this paper."
-          You respond with a yes, but you aren't really sure how to help.
-          Another message appears and explains that you have to run the
-          `support` command in your terminal. It looks like you can use the
-          terminal below.
-          """
+        e HelpBoxComponent, hidden: !@props.current, title: 'Hey!',
+          p null,
+            """
+            I'm a note. I'll be here every once in a while to give you some
+            seemingly (hopefully) helpful help. Anyways, this paper is
+            interactive, """
+            span className: 'screen-hidden', """
+              at least when viewed on a computer. You can go to
+              BenSites.com/FixThisPaper
+            """
+            " so you can actually use the terminal below. Pretty cool, right?"
+            span className: 'print-hidden', ' Try it out:'
