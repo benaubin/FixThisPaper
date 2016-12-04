@@ -28,6 +28,7 @@ module.exports =
         @terminalNode.scrollTop = terminalInputNode.offsetTop
     handleKeyPress: (e) =>
       if e.key == 'Enter'
+        
         unless @state.terminalText
           e.preventDefault()
           return false
@@ -36,6 +37,7 @@ module.exports =
           promptChar: @promptChar()
         }
         if @props.javascript
+          new Function('console', 'console.log("Test")')({log: function(){console.log('log', arguments)}})
           @jsObjs ||= newJsObjs(@onConsoleLog)
           try
             jsOutput = JSJS.EvaluateScript @jsObjs.cx, @jsObjs.glob, command.text

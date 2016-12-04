@@ -40,6 +40,5 @@ module.exports =
       div className: 'stage-3-javascript',
         p className: 'mla',
           e GlitchTextComponent, className: 'mla', text: """
-          Looks like you got in. Immediatly, you want to turn off the glitches.
-          The text is getting hard to read.
+          Looks like you got in. Let's try doing some things.
           """
